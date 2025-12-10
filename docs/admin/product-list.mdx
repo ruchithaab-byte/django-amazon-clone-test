@@ -1,0 +1,58 @@
+---
+title: 'Admin Product List'
+description: 'View and manage products in the admin panel'
+---
+
+# Admin Product List
+
+The Admin Product List page displays all products in a card-based layout with comprehensive product information.
+
+## Features
+
+### Product Information Display
+
+Each product card displays the following information:
+
+| Field | Description |
+|-------|-------------|
+| Product Name | The name of the product displayed in the card header |
+| Subcategory | The product's subcategory shown as a primary badge |
+| URL Slug | The SEO-friendly URL slug for the product |
+| Created At | The date and time when the product was created (format: YYYY-MM-DD HH:MM) |
+| Active Status | Toggle switch indicating if the product is active |
+
+### Product Actions
+
+Each product card provides quick access to the following actions:
+
+- **EDIT** - Modify product details
+- **ADD MEDIA** - Upload new media files for the product
+- **EDIT MEDIA** - Manage existing product media
+- **ADD Stocks** - Add inventory stock for the product
+
+### Search and Sort
+
+The page includes:
+
+- **Search functionality** - Filter products by name or other criteria
+- **Sort options** - Sort by ID, Title, or Description
+- **Pagination** - Navigate through product pages
+
+## Recent Changes
+
+### AGENTIC-113: Created At Column
+
+Added the product creation date display to each product card:
+
+- Shows the `created_at` timestamp for each product
+- Formatted as `YYYY-MM-DD HH:MM` for clarity
+- Displayed as an info badge for visual consistency
+- Helps administrators track when products were added to the catalog
+
+## Template Location
+
+The product list template is located at:
+
+```
+DjangoEcommerceApp/templates/admin_templates/product_list.html
+```
