@@ -1,58 +1,50 @@
 ---
-title: 'Admin Product List'
-description: 'View and manage products in the admin panel'
+title: "Product List Admin Page"
+description: "Admin product list displaying all products with creation dates"
 ---
 
-# Admin Product List
+# Product List Admin Page
 
-The Admin Product List page displays all products in a card-based layout with comprehensive product information.
+The Product List page in the admin panel provides a comprehensive view of all products in the system.
 
 ## Features
 
-### Product Information Display
+### Product Display
+Each product card displays:
+- **Product Name**: Shown in a badge at the top
+- **Subcategory**: The category the product belongs to
+- **URL Slug**: The unique URL identifier for the product
+- **Created At**: The date and time when the product was created (formatted as YYYY-MM-DD HH:MM)
+- **Active Status**: Toggle showing whether the product is active
 
-Each product card displays the following information:
+### Sorting Options
+Products can be sorted by:
+- **ID**: Sort by product ID
+- **Title**: Sort alphabetically by product name
+- **Description**: Sort by product description
+- **Created At**: Sort by creation date (newest or oldest)
 
-| Field | Description |
-|-------|-------------|
-| Product Name | The name of the product displayed in the card header |
-| Subcategory | The product's subcategory shown as a primary badge |
-| URL Slug | The SEO-friendly URL slug for the product |
-| Created At | The date and time when the product was created (format: YYYY-MM-DD HH:MM) |
-| Active Status | Toggle switch indicating if the product is active |
+### Search
+Use the search bar to filter products by name or other attributes.
 
-### Product Actions
+### Actions
+Each product card provides quick actions:
+- **Edit**: Modify product details
+- **Add Media**: Upload new media for the product
+- **Edit Media**: Modify existing product media
+- **Add Stocks**: Update product inventory
 
-Each product card provides quick access to the following actions:
+## Usage Example
 
-- **EDIT** - Modify product details
-- **ADD MEDIA** - Upload new media files for the product
-- **EDIT MEDIA** - Manage existing product media
-- **ADD Stocks** - Add inventory stock for the product
-
-### Search and Sort
-
-The page includes:
-
-- **Search functionality** - Filter products by name or other criteria
-- **Sort options** - Sort by ID, Title, or Description
-- **Pagination** - Navigate through product pages
+To access the product list:
+1. Navigate to the admin panel
+2. Click on "Product List" in the navigation menu
+3. Use the "Sort By" links to organize products
+4. Use the search bar to find specific products
 
 ## Recent Changes
 
-### AGENTIC-113: Created At Column
-
-Added the product creation date display to each product card:
-
-- Shows the `created_at` timestamp for each product
-- Formatted as `YYYY-MM-DD HH:MM` for clarity
-- Displayed as an info badge for visual consistency
-- Helps administrators track when products were added to the catalog
-
-## Template Location
-
-The product list template is located at:
-
-```
-DjangoEcommerceApp/templates/admin_templates/product_list.html
-```
+### AGENTIC-113: Display Product Creation Date
+- Added "Created At" sorting option in the Sort By section
+- Creation date is displayed for each product in a blue badge
+- Date format: YYYY-MM-DD HH:MM

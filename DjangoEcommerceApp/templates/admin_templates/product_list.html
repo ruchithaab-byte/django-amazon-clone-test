@@ -37,7 +37,8 @@ Product List
                 <b>Sort By : - </b>
                 <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=id">ID</a>  |
                 <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=product_name">Title</a> |
-                <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=product_description">Description</a>
+                <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=product_description">Description</a> |
+                <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=created_at">Created At</a>
             </div>
         </div>
         </div>
