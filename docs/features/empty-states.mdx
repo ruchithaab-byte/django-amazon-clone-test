@@ -1,0 +1,31 @@
+# Empty State Handling
+
+This document covers how empty states are handled throughout the application to provide a better user experience.
+
+## Product List Empty State
+
+When the product list is empty (no products have been created yet), the application displays a user-friendly message instead of showing a blank page.
+
+### Implementation
+
+The product list template (`DjangoEcommerceApp/templates/admin_templates/product_list.html`) includes conditional rendering:
+
+```django
+{% if not object_list %}
+    <div class="col-12">
+        <div class="alert alert-info">
+            <p>No products found. <a href="{% url 'product_view' %}">Create your first product!</a></p>
+        </div>
+    </div>
+{% endif %}
+```
+
+### User Experience
+
+- **Visual Feedback**: An informative alert box is displayed with Bootstrap's `alert-info` styling
+- **Actionable**: The message includes a direct link to create a new product
+- **Non-intrusive**: When products exist, this message is not shown
+
+### Related Issues
+
+- AGENTIC-117: Display "No products found" message when product list is empty
