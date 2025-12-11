@@ -1,0 +1,25 @@
+# Admin List Page Filter Improvements
+
+## Clear Filter Button
+
+In version X.X.X, we introduced a "Clear" button in the admin list pages for categories and subcategories to enhance user experience.
+
+### Features
+- Added "Clear" button next to search input in category list page
+- Added "Clear" button next to search input in subcategory list page
+- Button removes all applied filters instantly
+- Consistent styling with existing admin interface buttons
+
+### Usage
+When filtering categories or subcategories, users can now click the "Clear" button to quickly reset all filters and view the full list.
+
+#### Example
+```html
+<!-- Clear button in search form -->
+<a href="{% url 'category_list' %}" class="btn btn-secondary btn-sm">Clear</a>
+```
+
+### Benefits
+- Improved user experience
+- Faster navigation
+- Simplified filter management
