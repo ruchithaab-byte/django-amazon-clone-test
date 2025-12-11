@@ -67,6 +67,13 @@ Product List
         <p>{{ subcategory.description }}</p>
         <p><span class="badge badge-warning">Url Slug : {{ product.product.url_slug }}</span></p>
         <p><span class="badge badge-info">Created At: {{ product.product.created_at|date:"Y-m-d H:i" }}</span></p>
+        <p>
+            {% if product.product.is_active == 1 %}
+                <span class="badge badge-success">Active</span>
+            {% else %}
+                <span class="badge badge-secondary">Inactive</span>
+            {% endif %}
+        </p>
         <div class="article-cta">
             <label class="custom-switch mt-2" style="float:left">
                         <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" {% if product.product.is_active == 1 %}checked{% endif %}>
