@@ -1,0 +1,38 @@
+---
+title: 'Form Field Validation'
+description: 'Understanding required field indicators in forms'
+---
+
+## Required Field Indicators
+
+In our Django application, required form fields are automatically marked with a red asterisk (*) to indicate that they are mandatory.
+
+### How It Works
+
+The template uses Django's form field attributes to dynamically display a red asterisk for required fields:
+
+```html
+<label>
+  {{ field.label }}
+  {% if field.field.required %} 
+    <span style="color: red;">*</span>
+  {% endif %}
+</label>
+```
+
+### Benefits
+
+- Clear visual indication of mandatory fields
+- Improves user experience by setting expectations
+- Reduces form submission errors
+
+### Affected Forms
+
+The following forms have been updated with required field indicators:
+- Category Create/Update Forms
+- Sub-Category Create/Update Forms
+- Product Create/Edit Forms
+
+### Customization
+
+The red asterisk is styled inline with `style="color: red;"`. This can be further customized by adding a CSS class or modifying the styling as needed.

@@ -1,0 +1,22 @@
+# Required Field Indicator
+
+## Overview
+This feature automatically adds a red asterisk (*) next to required form fields to improve user understanding of mandatory inputs.
+
+## Implementation Details
+- Implemented using Django template syntax 
+- Red asterisk appears dynamically based on field requirements
+- Supports both create and edit forms across different sections (Category, Sub-Category, Product)
+
+### Example Implementation
+```html
+<label>{{ field.label }}{% if field.field.required %} <span style="color: red;">*</span>{% endif %}</label>
+```
+
+## Supported Forms
+- Category Create/Update
+- Sub-Category Create/Update
+- Product Create/Edit
+
+## Accessibility
+Provides a clear visual cue for users about which form fields are mandatory, improving form usability.

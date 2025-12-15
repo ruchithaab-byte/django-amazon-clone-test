@@ -1,0 +1,39 @@
+# Required Field Indicators in Admin Templates
+
+## Overview
+
+We've added red asterisk (*) indicators to required form fields in the admin templates to improve form usability.
+
+## Changes
+
+- Added `{% if field.field.required %} <span style="color: red;">*</span>{% endif %}` to field labels
+- Included `required` attribute for input fields based on form field requirements
+
+## Affected Templates
+
+- `category_create.html`
+- `category_update.html`
+- `sub_category_create.html`
+- `sub_category_update.html`
+- `product_create.html`
+- `product_edit.html`
+
+### Example Implementation
+
+```html
+<label>
+    {{ field.label }}
+    {% if field.field.required %}
+        <span style="color: red;">*</span>
+    {% endif %}
+</label>
+<input type="{{ field.field.widget.input_type }}"
+       name="{{ field.name }}"
+       {% if field.field.required %}required{% endif %}>
+```
+
+## Benefits
+
+- Clearer indication of mandatory fields
+- Improved form usability
+- Enhanced user experience in admin interface

@@ -1,0 +1,25 @@
+---
+title: 'Required Field Indicators'
+description: 'How required fields are marked in admin forms'
+---
+
+## Required Field Indicators
+
+In our admin templates, required fields are now visually marked with a red asterisk (*) to clearly indicate mandatory fields.
+
+### Implementation Details
+
+- Red asterisk added next to label text
+- Asterisk styled with `style="color: red;"`
+- Applied to all create and update forms in admin templates
+
+### Example
+
+```html
+<label>Title <span style="color: red;">*</span></label>
+```
+
+### Forms Updated
+- Category Create/Update Forms
+- Sub-Category Create/Update Forms
+- Product Create/Edit Forms

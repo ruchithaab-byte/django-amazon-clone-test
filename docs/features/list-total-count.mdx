@@ -1,0 +1,29 @@
+---
+title: List Page Total Count Display
+description: Feature to show total number of items in list pages
+---
+
+## Overview
+All list pages in the Django Amazon Clone application now display the total count of items in the header.
+
+## Implemented List Pages
+- Category List: Shows total number of categories
+- Sub-Category List: Shows total number of sub-categories
+- Product List: Shows total number of products
+- Merchant List: Shows total number of merchant users
+
+## Implementation Details
+The total count is displayed using Django template filters:
+```django
+<h4>Categories <small>(Total: {{ object_list|length }})</small></h4>
+```
+
+## Behavior
+- The count dynamically updates based on applied filters
+- Provides quick visual feedback about the number of items in the list
+- No performance impact, uses built-in Django template length filter
+
+## Acceptance Criteria
+✓ Total count displays in list headers
+✓ Count updates correctly with filters
+✓ No breaking changes introduced

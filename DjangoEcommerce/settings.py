@@ -26,7 +26,9 @@ SECRET_KEY = '8$37$=e=f7mf%6zlyu==-wosqc&xt%rq&+fbs&rl72)z)7z89s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# CRITICAL: Allow container networking for SDLC Agent testing
+# This enables Playwright tests to connect from host to Django container
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

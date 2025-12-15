@@ -1,0 +1,19 @@
+# Form Field Requirements
+
+## Required Field Indication
+
+In the admin templates, required form fields are automatically marked with a red asterisk (*) to indicate mandatory fields.
+
+### Implementation Details
+
+- The asterisk is dynamically added using Django template logic
+- Only fields marked as `required=True` in the form definition will show the asterisk
+- The asterisk is styled with a red color to stand out
+
+### Example
+
+```html
+<label>{{ field.label }}{% if field.field.required %} <span style="color: red;">*</span>{% endif %}</label>
+```
+
+This approach ensures that users are immediately aware of which fields must be filled out when creating or editing records.

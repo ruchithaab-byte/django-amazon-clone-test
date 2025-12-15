@@ -1,0 +1,33 @@
+# Total Count Display in List Pages
+
+## Overview
+This feature adds a total count display to various list pages in the admin dashboard, providing quick visibility into the number of items in each list.
+
+## Implemented Pages
+- Category List
+- Sub-Category List
+- Product List
+- Merchant List
+
+## Implementation Details
+Each list page now includes a total count display in the page title using Django's template length filter:
+
+```django
+<h4>Page Title <small>(Total: {{ list_variable|length }})</small></h4>
+```
+
+### Example
+```django
+{% block page_title %}
+Category List <small>(Total: {{ categories_list|length }})</small>
+{% endblock page_title %}
+```
+
+## Benefits
+- Immediate visibility of list size
+- Helps administrators quickly understand data volume
+- No additional backend logic required
+
+## Compatibility
+- Works with pagination
+- Reflects current filtered/search results

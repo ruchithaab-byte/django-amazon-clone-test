@@ -1,0 +1,29 @@
+---
+title: 'Product List Management'
+description: 'Overview of product list functionality in the admin interface'
+---
+
+## Product List Features
+
+### View Details Link
+
+The product list table includes a "View" link for each product, which allows quick navigation to the product edit page.
+
+#### Key Details
+- Located in the "Actions" column
+- Provides direct access to product edit page
+- Links to `{% url 'product_edit' product.id %}`
+
+#### Usage Example
+
+```html
+<td>
+    <div class="btn-group" role="group">
+        <a href="{% url 'product_edit' product.id %}" class="btn btn-sm btn-info">View Details</a>
+    </div>
+</td>
+```
+
+### Functionality
+- Allows administrators to quickly access and edit product details
+- Part of the product management workflow in the admin interface
