@@ -30,8 +30,10 @@ Product Edit #{{ product.id }}
                         <div class="form-group">
                             <label>{{ field.label }}{% if field.field.required %} <span style="color: red;">*</span>{% endif %}</label>
                             {% if field.field.widget.input_type == 'textarea' %}
+
                                 <textarea class="form-control char-count-input" name="{{ field.name }}" id="{{ field.name }}" maxlength="500">{{ field.value|default_if_none:"" }}</textarea>
                                 <small class="text-muted">Character count: <span id="{{ field.name }}-charCount">0</span>/500</small>
+
                             {% elif field.field.widget.input_type == 'select' %}
                                 <select name="{{ field.name }}" class="form-control">
                                     {% for choice in field.field.choices %}
@@ -105,6 +107,7 @@ $(document).ready(function(){
     });
 });
 
+
 // Character count functionality
 document.addEventListener('DOMContentLoaded', function() {
     const charCountInputs = document.querySelectorAll('.char-count-input');
@@ -119,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
         charCountSpan.textContent = input.value.length;
     });
 });
+
 </script>
 <script src="//bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
 {% endblock custom_js %}
