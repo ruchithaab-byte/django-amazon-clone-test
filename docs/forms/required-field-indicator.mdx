@@ -1,0 +1,24 @@
+# Required Field Indicator
+
+## Overview
+Added a red asterisk (*) to indicate required fields in various admin template forms.
+
+## Details
+The following form templates now include a red asterisk for required fields:
+- Category Create/Update Forms
+- Sub-Category Create/Update Forms
+- Product Create/Edit Forms
+
+### Implementation
+Implemented using a simple HTML span with red color:
+```html
+<label>Field Name <span style="color: red;">*</span></label>
+```
+
+### Affected Files
+- category_create.html
+- category_update.html
+- sub_category_create.html
+- sub_category_update.html
+- product_create.html
+- product_edit.html
