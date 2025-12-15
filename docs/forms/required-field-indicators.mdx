@@ -1,0 +1,34 @@
+---
+title: Form Required Field Indicators
+description: Implementation of required field indicators in Django Amazon Clone forms
+---
+
+## Required Field Indicators
+
+### Overview
+All forms in the application now include a red asterisk (*) next to required field labels to clearly indicate mandatory fields.
+
+### Implementation Details
+- Indicator is conditionally rendered using Django template syntax
+- Red color for high visibility
+- Applies to create and edit forms across various models (Category, Sub-Category, Product)
+
+### Template Example
+```html
+<label>
+  {{ field.label }}
+  {% if field.field.required %}
+    <span style="color: red;">*</span>
+  {% endif %}
+</label>
+```
+
+### Affected Forms
+- Category Create/Edit
+- Sub-Category Create/Edit
+- Product Create/Edit
+
+### Benefits
+- Improved user experience
+- Clear indication of mandatory fields
+- Consistent design across forms

@@ -1,24 +1,24 @@
-## Product Status Badge
+---
+title: 'Product Management: View Details'
+description: 'Viewing Product Details in Admin Panel'
+---
 
-For the issue AGENTIC-118, an investigation was conducted on the product list template. 
+## Product List View Details
 
-### Findings
-- The existing template (`admin_templates/product_list.html`) already implements the status badge feature as requested.
-- Active products are displayed with a green "Active" badge
-- Inactive products are displayed with a grey "Inactive" badge
-- No code changes were required to meet the issue requirements
+In the product list admin interface, each product row includes a "View" button that allows quick navigation to the product edit page.
 
-### Implementation Details
+### Features
+- Located in the "Actions" column of the product list table
+- Provides a direct link to edit the specific product
+- Uses Django's URL routing to navigate to the product edit page
+
+### Usage
+Each product row has a "View" button that, when clicked, takes you to the edit page for that specific product.
+
+Example:
 ```html
-<td>
-    {% if product.product.is_active == 1 %}
-        <span class="badge badge-success">Active</span>
-    {% else %}
-        <span class="badge badge-secondary">Inactive</span>
-    {% endif %}
-</td>
+<a href="{% url 'product_edit' product_id=product.product.id %}" class="btn btn-info btn-sm">View</a>
 ```
 
-### Verification
-- Template checked and confirmed to meet all acceptance criteria
-- No modifications were necessary
+### Routing
+The link uses the `product_edit` URL name, passing the product's unique ID to load the correct product details.

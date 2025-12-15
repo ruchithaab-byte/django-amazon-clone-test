@@ -1,0 +1,31 @@
+---
+title: Product Form Character Count Indicator
+description: Implementation of character count display for product description fields
+---
+
+## Overview
+
+We've added a character count indicator to product description textareas in both product create and edit forms. This feature helps users track their input against the 500-character limit.
+
+### Features
+- Real-time character count display
+- Maximum limit of 500 characters set on textareas
+- Character count updates dynamically as user types
+- Displayed below each textarea with format: "Current Count/Maximum Limit"
+
+### Implementation Details
+- Added to both `product_create.html` and `product_edit.html`
+- Uses vanilla JavaScript for count tracking
+- Minimal performance impact
+- Graceful degradation if JavaScript is disabled
+
+### Example
+```html
+<textarea class="form-control char-count-input" maxlength="500"></textarea>
+<small class="text-muted">Character count: <span>0</span>/500</small>
+```
+
+### Compatibility
+- Works with existing form handling
+- No changes required to backend logic
+- Supports all modern browsers

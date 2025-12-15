@@ -1,0 +1,24 @@
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+DjangoEcommerceApp.AdminUser: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+	HINT: Configure the DEFAULT_AUTO_FIELD setting or the DjangoecommerceappConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+DjangoEcommerceApp.CustomUser: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+	HINT: Configure the DEFAULT_AUTO_FIELD setting or the DjangoecommerceappConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+DjangoEcommerceApp.CustomerUser: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+	HINT: Configure the DEFAULT_AUTO_FIELD setting or the DjangoecommerceappConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+DjangoEcommerceApp.MerchantUser: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+	HINT: Configure the DEFAULT_AUTO_FIELD setting or the DjangoecommerceappConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+DjangoEcommerceApp.StaffUser: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+	HINT: Configure the DEFAULT_AUTO_FIELD setting or the DjangoecommerceappConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+
+System check identified 5 issues (0 silenced).
+Not Found: /
+[15/Dec/2025 06:40:15] "GET / HTTP/1.1" 404 2330
+Not Found: /
+[15/Dec/2025 06:47:15] "HEAD / HTTP/1.1" 404 0
+Not Found: /auth/login/
+[15/Dec/2025 06:47:32] "GET /auth/login/ HTTP/1.1" 404 2381
+Not Found: /auth/login/
+[15/Dec/2025 06:47:55] "GET /auth/login/ HTTP/1.1" 404 2381
