@@ -1,31 +1,22 @@
-# Product List Admin View
+---
+title: Product List Admin Page
+description: Features and functionality of the product list administration page
+---
 
-## Status Badge Feature
+## Product List Functionality
 
-The product list now includes a Status column that displays the active/inactive state of each product.
+### Bulk Product Selection
 
-### Status Badge Representation
+The product list page now includes a "Select All" checkbox functionality to enable bulk selection of products.
 
-- **Active Products**: Green badge with "Active" text
-- **Inactive Products**: Grey badge with "Inactive" text
+#### Features
+- A checkbox in the table header allows selecting/deselecting all products
+- Individual checkboxes for each product row
+- JavaScript-powered toggle mechanism
 
-### Implementation Details
+#### Usage
+1. Click the checkbox in the table header to select/deselect all products
+2. Individual product checkboxes can be selected independently
+3. The "Select All" checkbox state reflects the current selection of individual checkboxes
 
-- Located in: `DjangoEcommerceApp/templates/admin_templates/product_list.html`
-- Uses Bootstrap badge classes for styling
-- Conditional rendering based on `is_active` field
-
-### Example
-
-```html
-{% if product.product.is_active == 1 %}
-    <span class="badge badge-success">Active</span>
-{% else %}
-    <span class="badge badge-secondary">Inactive</span>
-{% endif %}
-```
-
-### Changelog
-
-- Added Status column to product list table
-- Implemented visual distinction for active/inactive products
+**Note:** This feature facilitates easier management of multiple products in the admin interface.
