@@ -39,6 +39,9 @@ Product List <small>(Total: {{ object_list|length }})</small>
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <th>
+                                        <input type="checkbox" id="selectAllProducts" onclick="toggleAllProducts()">
+                                    </th>
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Subcategory</th>
@@ -51,6 +54,9 @@ Product List <small>(Total: {{ object_list|length }})</small>
                             <tbody>
                                 {% for product in object_list %}
                                 <tr>
+                                    <td>
+                                        <input type="checkbox" class="product-checkbox" name="product_ids" value="{{ product.product.id }}">
+                                    </td>
                                     <td>{{ product.product.id }}</td>
                                     <td>{{ product.product.product_name }}</td>
                                     <td>{{ product.product.subcategories_id.title }}</td>
@@ -111,4 +117,14 @@ Product List <small>(Total: {{ object_list|length }})</small>
 
 
 {% block custom_js %}
+<script>
+function toggleAllProducts() {
+    const selectAllCheckbox = document.getElementById('selectAllProducts');
+    const productCheckboxes = document.querySelectorAll('.product-checkbox');
+
+    productCheckboxes.forEach(checkbox => {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
+}
+</script>
 {% endblock custom_js %}
