@@ -1,0 +1,28 @@
+# Bulk Product Selection
+
+## Overview
+The product list page now supports bulk selection of products using a "Select All" checkbox in the table header.
+
+## Features
+- Checkbox in table header to select/deselect all products
+- Individual checkboxes for each product row
+- JavaScript-powered toggle functionality
+
+## Usage
+1. Navigate to the product list page
+2. Use the top-level checkbox to select or deselect all products
+3. Alternatively, select individual products as needed
+
+## Implementation Details
+- Implemented in: `DjangoEcommerceApp/templates/admin_templates/product_list.html`
+- Uses client-side JavaScript for checkbox toggle
+- No server-side changes required
+
+## Example
+```html
+<input type="checkbox" id="selectAllProducts" onclick="toggleAllProducts()">
+```
+
+## Accessibility
+- Checkbox provides visual and interactive selection mechanism
+- Compatible with screen readers and keyboard navigation
