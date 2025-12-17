@@ -1,0 +1,99 @@
+# 0004. Product Timestamp Tracking Enhancement
+
+Date: 2025-12-16
+
+## Status
+
+Proposed | Accepted
+
+## Context
+
+Our e-commerce platform currently lacks a comprehensive approach to tracking and displaying product modification timestamps. The existing system has basic `created_at` fields, but the timestamp tracking and display are inconsistent across different models.
+
+### Forces
+- Admins need visibility into when products were last modified
+- Existing models have inconsistent timestamp implementation
+- Need for both absolute and relative time display
+- Requirement to sort and filter products by modification time
+
+### Current Limitations
+- No standardized approach to timestamp tracking
+- Limited visibility into product modification history
+- No easy way to sort or filter by last updated time
+
+## Decision
+
+We will implement a comprehensive timestamp tracking solution with the following characteristics:
+
+1. Add `updated_at` field to all product-related models using Django's `auto_now=True`
+2. Implement timestamp display in both admin and list views
+3. Support multiple timestamp display formats:
+   - Full datetime (e.g., "December 16, 2025 02:30 PM")
+   - Relative time (e.g., "2 hours ago")
+4. Enable sorting and filtering by `updated_at` in list views
+5. Extend timestamp tracking to core product-related models
+
+### Implementation Details
+- Use `models.DateTimeField(auto_now=True)` for all timestamp fields
+- Leverage Django's `humanize` app for relative time display
+- Update ProductListView to support `orderby=updated_at`
+- Add timestamp columns to:
+  - Products
+  - ProductAbout
+  - ProductDetails
+  - ProductMedia
+
+## Consequences
+
+### Positive
+- Improved product management visibility
+- Consistent timestamp tracking across models
+- Enhanced admin user experience
+- Better tracking of product modifications
+
+### Negative
+- Slight increase in database storage requirements
+- Minimal performance overhead for timestamp updates
+- Requires migration of existing models
+
+### Neutral
+- Additional column in product-related views
+- Minor template and view modifications needed
+
+## Alternatives Considered
+
+### Alternative 1: Manual Timestamp Tracking
+- Manually update timestamps in save methods
+- Pros: More control over timestamp updates
+- Cons: Prone to human error, inconsistent implementation
+- Why rejected: Less reliable than Django's built-in `auto_now`
+
+### Alternative 2: Third-Party Timestamp Package
+- Use a dedicated Django package for advanced timestamp tracking
+- Pros: Potentially more features
+- Cons: Additional dependency, potential complexity
+- Why rejected: Django's built-in functionality is sufficient
+
+### Alternative 3: No Timestamp Enhancement
+- Keep current minimal timestamp tracking
+- Pros: No development effort
+- Cons: Poor user experience, limited visibility
+- Why rejected: Does not meet product management needs
+
+## References
+- Django DateTimeField documentation
+- Django humanize app
+- Existing product management views
+- Product list and edit templates
+
+## Implementation Plan
+1. Add `updated_at` to target models
+2. Run database migrations
+3. Update templates to display timestamps
+4. Modify list view sorting capabilities
+5. Add optional relative time display
+6. Update documentation and user guides
+
+## Open Questions
+- Should we add a "modified by" field to track the user making changes?
+- Do we need to implement versioning or audit log for product changes?
