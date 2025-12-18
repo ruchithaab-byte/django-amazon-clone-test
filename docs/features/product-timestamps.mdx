@@ -1,0 +1,27 @@
+---
+title: Product Edit Page Timestamps
+description: Display of product creation and last updated timestamps
+---
+
+## Timestamp Display on Product Edit Page
+
+### Overview
+The product edit page now includes two key timestamps:
+- **Created At**: Shows when the product was initially created
+- **Last Updated**: Shows the most recent modification date
+
+### Location
+Timestamps are displayed in the card header and body of the product edit form.
+
+### Date Formatting
+- **Created At**: Formatted as `YYYY-MM-DD HH:MM`
+- **Last Updated**: Formatted as `Month DD, YYYY HH:MM AM/PM`
+
+### Example
+```html
+<p class="text-muted">Created: {{ product.created_at|date:"Y-m-d H:i" }}</p>
+<small class="text-muted">Last Updated: {{ product.updated_at|date:"F d, Y h:i A" }}</small>
+```
+
+### Purpose
+These timestamps provide quick visibility into the product's lifecycle, helping administrators track when products were created and last modified.
