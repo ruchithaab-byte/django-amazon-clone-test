@@ -5,6 +5,17 @@ Product List
 
 
 {% block custom_css %}
+<style>
+    .copy-btn {
+        margin-left: 5px;
+    }
+    .copied-message {
+        color: green;
+        font-size: 0.8em;
+        margin-left: 10px;
+        display: none;
+    }
+</style>
 {% endblock custom_css %}
 
 {% block page_title %}
@@ -51,7 +62,13 @@ Product List <small>(Total: {{ object_list|length }})</small>
                             <tbody>
                                 {% for product in object_list %}
                                 <tr>
-                                    <td>{{ product.product.id }}</td>
+                                    <td>
+                                        {{ product.product.id }}
+                                        <button onclick="copyToClipboard('{{ product.product.id }}')" class="btn btn-sm btn-secondary copy-btn">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                        <span class="copied-message" id="copy-message-{{ product.product.id }}">Copied!</span>
+                                    </td>
                                     <td>{{ product.product.product_name }}</td>
                                     <td>{{ product.product.subcategories_id.title }}</td>
                                     <td>{{ product.product.url_slug }}</td>
@@ -111,4 +128,31 @@ Product List <small>(Total: {{ object_list|length }})</small>
 
 
 {% block custom_js %}
+<script>
+function copyToClipboard(productId) {
+    // Create a temporary textarea element
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = productId;
+    document.body.appendChild(tempTextArea);
+
+    // Select the text
+    tempTextArea.select();
+    tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text to clipboard
+    document.execCommand('copy');
+
+    // Remove the temporary textarea
+    document.body.removeChild(tempTextArea);
+
+    // Show the copied message
+    const messageElement = document.getElementById('copy-message-' + productId);
+    messageElement.style.display = 'inline';
+
+    // Hide the message after 2 seconds
+    setTimeout(() => {
+        messageElement.style.display = 'none';
+    }, 2000);
+}
+</script>
 {% endblock custom_js %}
