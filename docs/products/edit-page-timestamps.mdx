@@ -1,25 +1,32 @@
 ---
 title: Product Edit Page Timestamps
-description: Display of created and last updated timestamps for products
+description: Displaying creation and modification times for products
 ---
 
-## Product Edit Page Timestamp Display
+## Timestamp Display on Product Edit Page
 
-The product edit page provides two key timestamps for tracking product modifications:
-
-### Created Timestamp
-- Located at the top of the product edit form
-- Displays the original creation date and time
-- Format: `YYYY-MM-DD HH:MM`
-- Example: `Created: 2023-10-15 14:30`
-
-### Last Updated Timestamp
-- Located in the card header of the product edit form
-- Shows the most recent modification date and time
-- Format: `YYYY-MM-DD HH:MM`
-- Example: `Last Updated: 2023-10-20 09:45`
+### Overview
+The product edit page now displays two important timestamps:
+- **Created At**: Shows the original creation date and time of the product
+- **Last Modified**: Indicates the most recent update to the product
 
 ### Implementation Details
-- Uses Django's built-in date template filter
-- Utilizes `product.created_at` and `product.updated_at` model fields
-- Displayed using Bootstrap text styling classes
+- Timestamps are displayed in the format: `YYYY-MM-DD HH:MM`
+- Located at the top of the product edit form
+- Both timestamps use Django's date template filter for consistent formatting
+
+### Example
+```html
+<div class="row mb-3">
+    <div class="col-md-6">
+        <p class="text-muted">Created: 2023-12-15 14:30</p>
+    </div>
+    <div class="col-md-6 text-right">
+        <p class="text-muted">Last Modified: 2023-12-20 09:45</p>
+    </div>
+</div>
+```
+
+### Benefits
+- Provides clear visibility into product lifecycle
+- Helps track when products were created and last updated

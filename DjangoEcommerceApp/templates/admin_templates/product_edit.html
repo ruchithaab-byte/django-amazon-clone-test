@@ -31,8 +31,13 @@ Product Edit #{{ product.id }}
                 </div>
             </div>
             <div class="card-body">
-                <div class="mb-3">
-                    <p class="text-muted">Created: {{ product.created_at|date:"Y-m-d H:i" }}</p>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <p class="text-muted">Created: {{ product.created_at|date:"Y-m-d H:i" }}</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p class="text-muted">Last Modified: {{ product.updated_at|date:"Y-m-d H:i" }}</p>
+                    </div>
                 </div>
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
