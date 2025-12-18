@@ -81,6 +81,7 @@ class Products(models.Model):
     product_description=models.TextField()
     product_long_description=models.TextField()
     created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
     added_by_merchant=models.ForeignKey(MerchantUser,on_delete=models.CASCADE)
     in_stock_total=models.IntegerField(default=1)
     is_active=models.IntegerField(default=1)

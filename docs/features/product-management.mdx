@@ -1,24 +1,15 @@
 ---
-title: 'Product Management: View Details'
-description: 'Viewing Product Details in Admin Panel'
+title: Product Management Features
+description: Overview of product management features in the Django Amazon Clone
 ---
 
-## Product List View Details
+## Product Deletion Confirmation
 
-In the product list admin interface, each product row includes a "View" button that allows quick navigation to the product edit page.
+When deleting a product from the admin interface, a confirmation dialog appears to prevent accidental deletions. This helps protect against unintended data loss by requiring explicit user confirmation before removing a product.
 
-### Features
-- Located in the "Actions" column of the product list table
-- Provides a direct link to edit the specific product
-- Uses Django's URL routing to navigate to the product edit page
+### Confirmation Dialog
 
-### Usage
-Each product row has a "View" button that, when clicked, takes you to the edit page for that specific product.
-
-Example:
-```html
-<a href="{% url 'product_edit' product_id=product.product.id %}" class="btn btn-info btn-sm">View</a>
-```
-
-### Routing
-The link uses the `product_edit` URL name, passing the product's unique ID to load the correct product details.
+- When clicking the "Delete" button, a browser dialog appears
+- Dialog text: "Are you sure you want to delete this product?"
+- User can cancel the deletion by clicking "Cancel"
+- Deletion proceeds only if user clicks "OK"

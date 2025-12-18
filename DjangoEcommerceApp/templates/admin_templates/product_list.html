@@ -67,6 +67,7 @@ Product List <small>(Total: {{ object_list|length }})</small>
                                         <div class="btn-group" role="group">
                                             <a href="{% url 'product_edit' product_id=product.product.id %}" class="btn btn-info btn-sm">View</a>
                                             <a href="{% url 'product_add_media' product_id=product.product.id %}" class="btn btn-danger btn-sm">Add Media</a>
+                                            <a href="#" onclick="return confirm('Are you sure you want to delete this product?');" class="btn btn-warning btn-sm">Delete</a>
                                         </div>
                                     </td>
                                 </tr>
