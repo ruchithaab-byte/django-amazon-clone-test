@@ -70,3 +70,4 @@ pytest tests/playwright/ -v
 The Django server will start automatically before tests run and stop after all tests complete.
 
 
+

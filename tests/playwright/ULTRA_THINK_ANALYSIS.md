@@ -288,3 +288,4 @@ The **event loop issue is fixed**. The remaining failures are due to **route mis
 The choice depends on whether the goal is to test the actual app (Option 1) or to add features the tests expect (Option 2).
 
 
+
