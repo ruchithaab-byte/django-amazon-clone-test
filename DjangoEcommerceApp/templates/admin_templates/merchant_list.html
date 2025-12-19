@@ -35,11 +35,14 @@ Merchant User List <small>(Total: {{ merchantuser_list|length }})</small>
                   
             <div class="card-body">
                 <b>Sort By : - </b>
-                <a href="{% url 'merchant_list' %}?filter={{ filter }}&orderby=id">ID</a>  | 
-                <a href="{% url 'merchant_list' %}?filter={{ filter }}&orderby=created_at">Newest</a> |  
-                <a href="{% url 'merchant_list' %}?filter={{ filter }}&orderby=company_name">Company</a> |
-                <a href="{% url 'merchant_list' %}?filter={{ filter }}&orderby=created_at">Newest</a> |
-                <a href="{% url 'merchant_list' %}?filter={{ filter }}&orderby=auth_user_id__username">Username</a> |
+                <a href="{% url 'merchant_list' %}?filter={{ filter }}&orderby=id"
+                   class="btn btn-sm {% if orderby == 'id' %}btn-primary{% else %}btn-outline-secondary{% endif %}">ID</a>
+                <a href="{% url 'merchant_list' %}?filter={{ filter }}&orderby=created_at"
+                   class="btn btn-sm {% if orderby == 'created_at' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Newest</a>
+                <a href="{% url 'merchant_list' %}?filter={{ filter }}&orderby=company_name"
+                   class="btn btn-sm {% if orderby == 'company_name' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Company</a>
+                <a href="{% url 'merchant_list' %}?filter={{ filter }}&orderby=auth_user_id__username"
+                   class="btn btn-sm {% if orderby == 'auth_user_id__username' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Username</a>
             </div>
         </div>
         </div>

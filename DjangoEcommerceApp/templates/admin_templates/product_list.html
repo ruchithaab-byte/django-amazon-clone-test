@@ -30,6 +30,16 @@ Product List <small>(Total: {{ object_list|length }})</small>
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
+                <div class="sort-options mb-3">
+                    <b>Sort By: </b>
+                    <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=id"
+                       class="btn btn-sm {% if orderby == 'id' %}btn-primary{% else %}btn-outline-secondary{% endif %}">ID</a>
+                    <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=product_name"
+                       class="btn btn-sm {% if orderby == 'product_name' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Name</a>
+                    <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=created_at"
+                       class="btn btn-sm {% if orderby == 'created_at' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Created At</a>
+                </div>
+
                 {% if not object_list %}
                     <div class="alert alert-info">
                         <p>No products found. <a href="{% url 'product_view' %}">Create your first product!</a></p>
