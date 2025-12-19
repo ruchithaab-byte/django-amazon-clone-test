@@ -1,0 +1,27 @@
+---
+title: Admin Form Help Text
+description: Guide to help text in admin form fields
+---
+
+## Form Field Help Text
+
+In the Django Amazon Clone project, we've added helpful hint text to various admin form fields to guide users on what information to enter:
+
+### Category and Subcategory Forms
+- **URL Slug Field**: 
+  - Help Text: "Use lowercase letters, numbers, and hyphens only"
+  - Purpose: Ensure consistent and URL-friendly slug creation
+
+### Product Forms
+- **Product Name Field**:
+  - Help Text: "Enter the full product name as it should appear to customers"
+  - Purpose: Ensure accurate and complete product naming
+
+- **Brand Field**:
+  - Help Text: "Enter the manufacturer or brand name"
+  - Purpose: Clarify the type of information required in the brand field
+
+## Implementation Details
+- Help text is implemented using the `<small class="form-text text-muted">` HTML element
+- Positioned directly below the corresponding input field
+- Uses a muted/grey color to provide guidance without being too intrusive
