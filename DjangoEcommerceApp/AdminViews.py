@@ -268,11 +268,22 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         filter_val=self.request.GET.get("filter","")
+        brand_filter=self.request.GET.get("brand","")
         order_by=self.request.GET.get("orderby","id")
+
+        # Base query
+        products = Products.objects.all()
+
+        # Filter by name/description
         if filter_val!="":
-            products=Products.objects.filter(Q(product_name__contains=filter_val) | Q(product_description__contains=filter_val)).order_by(order_by)
-        else:
-            products=Products.objects.all().order_by(order_by)
+            products = products.filter(Q(product_name__contains=filter_val) | Q(product_description__contains=filter_val))
+
+        # Filter by brand
+        if brand_filter:
+            products = products.filter(brand=brand_filter)
+
+        # Order results
+        products = products.order_by(order_by)
 
         product_list=[]
         for product in products:
@@ -285,7 +296,12 @@ class ProductListView(ListView):
         context=super(ProductListView,self).get_context_data(**kwargs)
         context["filter"]=self.request.GET.get("filter","")
         context["orderby"]=self.request.GET.get("orderby","id")
+        context["brand"]=self.request.GET.get("brand","")
         context["all_table_fields"]=Products._meta.get_fields()
+
+        # Get unique brands for dropdown
+        context["brands"] = sorted(set(Products.objects.values_list('brand', flat=True)))
+
         return context
 
     def get(self, request, *args, **kwargs):
