@@ -1,0 +1,45 @@
+---
+title: Admin List Page Sort Improvements
+description: Visual enhancements for sorting options in admin list pages
+---
+
+## Overview
+
+This improvement adds a clear visual indicator for the currently active sort option in admin list pages. The changes make it easier for administrators to understand the current sorting state.
+
+## Changes
+
+### Implementation Details
+
+- Added conditional styling to highlight the active sort option
+- Preserved existing sorting functionality
+- Updated templates:
+  - `category_list.html`
+  - `sub_category_list.html`
+  - `product_list.html`
+  - `merchant_list.html`
+
+### Styling
+
+```html
+<a href="..." 
+   class="{% if orderby == 'field' %}font-weight-bold text-primary{% endif %}">
+   Sort Option
+</a>
+```
+
+- Active sort option is displayed with:
+  - Bold font weight
+  - Primary text color
+
+## Improvements
+
+- Clearer UI feedback
+- No changes to existing sorting logic
+- Consistent implementation across admin list pages
+
+## Compatibility
+
+- Works with existing pagination
+- Maintains current URL parameter mechanism
+- No breaking changes to sorting functionality

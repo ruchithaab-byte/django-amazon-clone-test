@@ -1,0 +1,39 @@
+---
+title: Admin List Page Sorting Enhancement
+description: Improved sorting functionality for admin list pages
+---
+
+## Overview
+In this enhancement, we've added visual sorting indicators to the admin list pages for Products, Merchants, and other list views. This provides a clear and intuitive way to understand the current sorting order.
+
+## Features
+- Visual highlighting of active sort option
+- Bootstrap-styled sort buttons
+- Consistent sorting mechanism across different list pages
+
+### Implementation Details
+- Uses existing `orderby` query parameter
+- Applies `btn-primary` class to active sort option
+- Maintains existing query parameter preservation for filtering and pagination
+
+### Supported List Pages
+- Product List
+- Merchant List
+- Staff List
+- Customer List
+
+### Example
+```html
+<a href="{% url 'list_page' %}?filter={{ filter }}&orderby=id"
+   class="btn btn-sm {% if orderby == 'id' %}btn-primary{% else %}btn-outline-secondary{% endif %}">ID</a>
+```
+
+## Best Practices
+- Use the built-in sorting links
+- Avoid manual manipulation of sorting parameters
+- Leverage the consistent sorting approach across list views
+
+## Impact
+- Improved user experience
+- Clear visual indication of current sorting
+- No change to underlying data retrieval logic

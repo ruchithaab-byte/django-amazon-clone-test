@@ -1,0 +1,38 @@
+---
+title: Sort Option Highlighting
+description: Improvements to sort option visual feedback in admin list views
+---
+
+## Sort Option Highlighting
+
+### Overview
+In version [current_version], we enhanced the sort option user experience by adding visual highlighting for the currently active sort option across admin list views.
+
+### Implementation Details
+
+#### Changes
+- Added active state highlighting for sort options
+- Converted text links to Bootstrap button-style links
+- Preserved existing filter and pagination parameters
+
+#### Affected Templates
+- `category_list.html`
+- `sub_category_list.html`
+
+#### Highlighting Mechanism
+Sort options now use a conditional class to indicate the active state:
+```html
+<a href="?orderby=field_name" 
+   class="btn btn-sm 
+          {% if orderby == 'field_name' %}btn-primary{% else %}btn-outline-secondary{% endif %}">
+   Field Label
+</a>
+```
+
+### Usage Example
+When sorting by "ID", the ID sort option will appear as a primary (filled) button, while other sort options remain as outlined secondary buttons.
+
+### Benefits
+- Improved user experience
+- Clear indication of current sort option
+- Consistent styling across admin list views
