@@ -1,0 +1,26 @@
+[
+  {
+    "content": "Completed research for: codebase_search",
+    "source": "codebase_search",
+    "category": "codebase_search",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "title='Validate Existing Refresh Mechanism' description='Confirm current refresh button functionality meets requirements' priority=<Priority.P2: 'P2'> assignee=None due_date=None files=[FileReference(path='DjangoEcommerceApp/templates/admin_templates/home.html', line_start=None, line_end=None, snippet=None)]",
+    "source": "pattern_analysis",
+    "category": "pattern_analysis",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "title='Enhance Refresh Button Styling' description='Ensure button is clearly visible and follows existing design patterns' priority=<Priority.P3: 'P3'> assignee=None due_date=None files=[FileReference(path='DjangoEcommerceApp/templates/admin_templates/home.html', line_start=None, line_end=None, snippet=None)]",
+    "source": "pattern_analysis",
+    "category": "pattern_analysis",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "title='Consolidate Settings Import' description='Refactor AdminViews.py to move settings import to module level' priority=<Priority.P3: 'P3'> assignee=None due_date=None files=[FileReference(path='/DjangoEcommerceApp/AdminViews.py', line_start=None, line_end=None, snippet=None)]",
+    "source": "dependency_check",
+    "category": "dependency_check",
+    "relevance_score": 1.0
+  }
+]
