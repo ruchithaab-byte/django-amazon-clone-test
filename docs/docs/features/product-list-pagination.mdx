@@ -1,0 +1,33 @@
+# Product List Pagination and Count Display
+
+## Overview
+This feature adds enhanced pagination and product count display to the product list page.
+
+## Features
+- Total product count display
+- Pagination information showing current range
+- Current page/total pages display
+- Filtered state indicator
+
+## Implementation Details
+- Added dynamic pagination info in `product_list.html`
+- Uses Django's built-in pagination context variables
+- Shows total product count and current page range
+- Displays "(filtered)" when search or filter is applied
+
+## Usage
+The pagination and count display are automatically rendered based on the Django view's pagination context.
+
+### Example
+```html
+<!-- Total Products Count -->
+<strong>Total Products:</strong> {{ paginator.count }}
+
+<!-- Pagination Info -->
+Showing {{ page_obj.start_index }} - {{ page_obj.end_index }} of {{ paginator.count }} products
+(Page {{ page_obj.number }} of {{ paginator.num_pages }})
+```
+
+## Requirements
+- Django Pagination enabled
+- `page_obj` and `paginator` context variables provided in the view
