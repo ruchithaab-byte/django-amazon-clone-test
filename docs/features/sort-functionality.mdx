@@ -1,0 +1,49 @@
+# Product List Sort Functionality
+
+## Overview
+
+The product list page now supports dynamic sorting with visual indication of the current active sort option. Users can sort the product list by ID, Name, or Creation Date.
+
+## Features
+
+- Preserve filter state while sorting
+- Visual highlighting of active sort option
+- Consistent sorting across pagination
+- Defaults to sorting by ID
+
+## Sort Options
+
+1. **ID Sort**
+   - Sorts products by their unique identifier
+   - Useful for systematic or chronological listing by registration order
+
+2. **Name Sort**
+   - Alphabetically sorts products by their name
+   - Helps in quickly locating products based on their title
+
+3. **Created At Sort**
+   - Sorts products by their creation timestamp
+   - Allows viewing newest or oldest products first
+
+## Implementation Details
+
+### URL Structure
+```
+/product_list?filter=[optional_filter]&orderby=[sort_field]&page=[page_number]
+```
+
+### Active Sort Styling
+- Font weight increased
+- Underlined text
+- Distinct color (#007bff - Bootstrap primary)
+
+## Best Practices
+
+- Sort links preserve existing filter
+- Pagination maintains current sort order
+- Default sort is by ID
+- Consistent across all admin list views (categories, subcategories, etc.)
+
+## Backend Handling
+
+Django's ListView is used with dynamic `.order_by()` method to handle sorting securely and efficiently.

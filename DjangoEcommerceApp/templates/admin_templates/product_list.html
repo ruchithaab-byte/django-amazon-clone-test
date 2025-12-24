@@ -15,6 +15,11 @@ Product List
         margin-left: 10px;
         display: none;
     }
+    .active-sort {
+        font-weight: 600;
+        text-decoration: underline;
+        color: #007bff;
+    }
 </style>
 {% endblock custom_css %}
 
@@ -34,6 +39,18 @@ Product List <small>(Total: {{ object_list|length }})</small>
                    </form>
                   </div>
                 </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <b>Sort By : - </b>
+                <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=id" class="{% if orderby == 'id' %}active-sort{% endif %}">ID</a> |
+                <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=product_name" class="{% if orderby == 'product_name' %}active-sort{% endif %}">Name</a> |
+                <a href="{% url 'product_list' %}?filter={{ filter }}&orderby=created_at" class="{% if orderby == 'created_at' %}active-sort{% endif %}">Created At</a>
+            </div>
         </div>
     </div>
 </div>

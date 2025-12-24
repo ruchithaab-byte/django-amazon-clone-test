@@ -1,0 +1,20 @@
+[
+  {
+    "content": "Completed research for: codebase_search",
+    "source": "codebase_search",
+    "category": "codebase_search",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "Completed research for: pattern_analysis",
+    "source": "pattern_analysis",
+    "category": "pattern_analysis",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "Dependency Analysis for Django Amazon Clone Test Project",
+    "source": "dependency_check",
+    "category": "dependency_check",
+    "relevance_score": 1.0
+  }
+]
