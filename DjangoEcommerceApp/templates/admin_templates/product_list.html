@@ -5,6 +5,15 @@ Product List
 
 
 {% block custom_css %}
+<style>
+    .product-image {
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+    }
+    .product-image:hover {
+        opacity: 0.7;
+    }
+</style>
 {% endblock custom_css %}
 
 {% block page_title %}
@@ -79,6 +88,23 @@ Product List <small>(Total: {{ object_list|length }})</small>
         </div>
     </div>
 </div>
+
+<!-- Product Image Lightbox Modal -->
+<div class="modal fade" id="productImageLightbox" tabindex="-1" role="dialog" aria-labelledby="productImageLightboxTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productImageLightboxTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="productImageLightboxContent" src="" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
 <div class="col-lg-12">
 <div class="card">
@@ -111,4 +137,33 @@ Product List <small>(Total: {{ object_list|length }})</small>
 
 
 {% block custom_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function openProductImageLightbox(imageUrl, productName) {
+        const lightboxModal = $('#productImageLightbox');
+        const lightboxTitle = document.getElementById('productImageLightboxTitle');
+        const lightboxImage = document.getElementById('productImageLightboxContent');
+
+        lightboxTitle.textContent = productName;
+        lightboxImage.src = imageUrl;
+        lightboxImage.alt = productName;
+
+        lightboxModal.modal('show');
+    }
+
+    // Event delegation for dynamically added product images
+    document.body.addEventListener('click', function(event) {
+        const productImage = event.target.closest('.product-image');
+
+        if (productImage) {
+            const imageUrl = productImage.getAttribute('data-image-url');
+            const productName = productImage.getAttribute('data-product-name');
+
+            if (imageUrl) {
+                openProductImageLightbox(imageUrl, productName);
+            }
+        }
+    });
+});
+</script>
 {% endblock custom_js %}
