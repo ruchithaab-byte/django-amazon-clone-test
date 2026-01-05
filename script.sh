@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 cd /workspace
-python manage.py test
+python3 manage.py test
