@@ -1,0 +1,38 @@
+# List Page Sorting
+
+## Active Sort Option Highlighting
+
+### Overview
+In version X.X, we introduced visual highlighting for the currently active sort option across admin list pages.
+
+### Implementation Details
+- Each list page now dynamically applies an `.active-sort` CSS class to the currently selected sort option
+- Sort links preserve existing filter and pagination parameters
+- Consistent styling across category, subcategory, product, and merchant list views
+
+### CSS Styling
+```css
+.active-sort {
+    font-weight: bold;
+    color: #007bff; /* Bootstrap primary color */
+    text-decoration: underline;
+}
+```
+
+### Example
+```html
+<!-- Sort link with active state logic -->
+<a href="{% url 'merchant_list' %}?filter={{ filter }}&orderby=id" 
+   class="{% if orderby == 'id' %}active-sort{% endif %}">
+   ID
+</a>
+```
+
+### Changelog
+- Added dynamic active sort highlighting
+- No changes to existing sorting logic
+- Minimal visual impact on existing design
+
+### Accessibility
+- Clear visual indication of current sort option
+- Maintained existing keyboard and screen reader support

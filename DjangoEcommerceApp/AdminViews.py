@@ -7,6 +7,7 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.messages.views import messages
 from django.urls import reverse
 from django.http import HttpResponseRedirect,HttpResponse
+import csv
 from django.db.models import Q
 from DjangoEcommerce.settings import BASE_URL
 from django.views.decorators.csrf import csrf_exempt
@@ -267,11 +268,22 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         filter_val=self.request.GET.get("filter","")
+        brand_filter=self.request.GET.get("brand","")
         order_by=self.request.GET.get("orderby","id")
+
+        # Base query
+        products = Products.objects.all()
+
+        # Filter by name/description
         if filter_val!="":
-            products=Products.objects.filter(Q(product_name__contains=filter_val) | Q(product_description__contains=filter_val)).order_by(order_by)
-        else:
-            products=Products.objects.all().order_by(order_by)
+            products = products.filter(Q(product_name__contains=filter_val) | Q(product_description__contains=filter_val))
+
+        # Filter by brand
+        if brand_filter:
+            products = products.filter(brand=brand_filter)
+
+        # Order results
+        products = products.order_by(order_by)
 
         product_list=[]
         for product in products:
@@ -284,8 +296,63 @@ class ProductListView(ListView):
         context=super(ProductListView,self).get_context_data(**kwargs)
         context["filter"]=self.request.GET.get("filter","")
         context["orderby"]=self.request.GET.get("orderby","id")
+        context["brand"]=self.request.GET.get("brand","")
         context["all_table_fields"]=Products._meta.get_fields()
+
+        # Get unique brands for dropdown
+        context["brands"] = sorted(set(Products.objects.values_list('brand', flat=True)))
+
         return context
+
+    def get(self, request, *args, **kwargs):
+        # Check if export to CSV is requested
+        if request.GET.get('export') == 'csv':
+            # Create CSV export
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename="products_export.csv"'
+
+            # Get all products
+            filter_val = request.GET.get("filter", "")
+            order_by = request.GET.get("orderby", "id")
+            if filter_val != "":
+                products = Products.objects.filter(Q(product_name__contains=filter_val) | Q(product_description__contains=filter_val)).order_by(order_by)
+            else:
+                products = Products.objects.all().order_by(order_by)
+
+            # Create CSV writer
+            csv_writer = csv.writer(response)
+
+            # Write header
+            csv_writer.writerow([
+                'ID',
+                'Name',
+                'Brand',
+                'Category',
+                'Subcategory',
+                'Max Price',
+                'Discount Price',
+                'Stock',
+                'Created At'
+            ])
+
+            # Write product data
+            for product in products:
+                csv_writer.writerow([
+                    product.id,
+                    product.product_name,
+                    product.brand,
+                    product.subcategories_id.category_id.title if product.subcategories_id and product.subcategories_id.category_id else 'N/A',
+                    product.subcategories_id.title if product.subcategories_id else 'N/A',
+                    product.product_max_price,
+                    product.product_discount_price,
+                    product.in_stock_total,
+                    product.created_at.strftime('%Y-%m-%d %H:%M:%S') if product.created_at else 'N/A'
+                ])
+
+            return response
+
+        # Otherwise, proceed with normal list view
+        return super().get(request, *args, **kwargs)
 
 
 class ProductEdit(View):

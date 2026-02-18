@@ -1,0 +1,26 @@
+[
+  {
+    "content": "Completed research for: codebase_search",
+    "source": "codebase_search",
+    "category": "codebase_search",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "Completed research for: pattern_analysis",
+    "source": "pattern_analysis",
+    "category": "pattern_analysis",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "title='Clean Up Import Statements' description='Modify AdminViews.py import for messages to use django.contrib directly' priority=<Priority.P3: 'P3'> assignee=None due_date=None files=[FileReference(path='DjangoEcommerceApp/AdminViews.py', line_start=7, line_end=None, snippet='from django.contrib.messages.views import messages')]",
+    "source": "dependency_check",
+    "category": "dependency_check",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "title='Pin Dependency Versions' description='Update requirements.txt with exact package versions for production stability' priority=<Priority.P2: 'P2'> assignee=None due_date=None files=[FileReference(path='requirements.txt', line_start=None, line_end=None, snippet=None)]",
+    "source": "dependency_check",
+    "category": "dependency_check",
+    "relevance_score": 1.0
+  }
+]

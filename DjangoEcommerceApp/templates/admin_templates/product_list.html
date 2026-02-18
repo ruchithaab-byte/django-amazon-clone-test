@@ -19,18 +19,68 @@ Product List
 {% endblock custom_css %}
 
 {% block page_title %}
-Product List <small>(Total: {{ object_list|length }})</small>
+Product List
 {% endblock page_title %}
 
 {% block page_content %}
+<div class="row mb-3">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <p class="mb-0">
+                    <strong>Total Products:</strong> {{ paginator.count }}
+                    {% if filter or brand %}
+                        <span class="text-muted">(filtered)</span>
+                    {% endif %}
+                </p>
+                {% if page_obj %}
+                    <p class="mb-0">
+                        Showing {{ page_obj.start_index }} - {{ page_obj.end_index }} of {{ paginator.count }} products
+                        {% if paginator.num_pages > 1 %}
+                            (Page {{ page_obj.number }} of {{ paginator.num_pages }})
+                        {% endif %}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-12">
         <div class="search-element">
         <div class="card">
                   <div class="card-body">
-                  <form method="get">
-                    <button class="btn  btn-primary" type="submit" style="float:right"><i class="fas fa-search"></i> Search</button>
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250" style="width: 250px;float:right" name="filter" value="{{ filter }}">
+                  <form method="get" id="product-filter-form">
+                    <a href="{% url 'product_list' %}?export=csv&filter={{ filter }}&brand={{ brand }}&orderby={{ orderby }}" class="btn btn-success" style="float:right; margin-left: 10px;"><i class="fas fa-file-export"></i> Export to CSV</a>
+                    <button class="btn btn-primary" type="submit" style="float:right"><i class="fas fa-search"></i> Search</button>
+                    <select
+                        name="brand"
+                        class="form-control"
+                        style="width: 150px; float:right; margin-right: 10px;"
+                        onchange="this.form.submit()"
+                        aria-label="Select Brand"
+                        data-placeholder="Filter by Brand"
+                    >
+                        <option value="" {% if not brand %}selected{% endif %}>All Brands</option>
+                        {% for brand_option in brands %}
+                            <option
+                                value="{{ brand_option }}"
+                                {% if brand == brand_option %}selected{% endif %}
+                            >
+                                {{ brand_option }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <input
+                        class="form-control"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search"
+                        data-width="250"
+                        style="width: 250px;float:right; margin-right: 10px;"
+                        name="filter"
+                        value="{{ filter }}"
+                    >
                    </form>
                   </div>
                 </div>
@@ -39,121 +89,67 @@ Product List <small>(Total: {{ object_list|length }})</small>
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
-            <div class="card-body">
-                {% if not object_list %}
-                    <div class="alert alert-info">
-                        <p>No products found. <a href="{% url 'product_view' %}">Create your first product!</a></p>
-                    </div>
-                {% else %}
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <!-- AGENTIC-131: Product ID column added for easy reference -->
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Subcategory</th>
-                                    <th>Url Slug</th>
-                                    <th>Status</th>
-                                    <th>Created At</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for product in object_list %}
-                                <tr>
-                                    <td>
-                                        {{ product.product.id }}
-                                        <button onclick="copyToClipboard('{{ product.product.id }}')" class="btn btn-sm btn-secondary copy-btn">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                        <span class="copied-message" id="copy-message-{{ product.product.id }}">Copied!</span>
-                                    </td>
-                                    <td>{{ product.product.product_name }}</td>
-                                    <td>{{ product.product.subcategories_id.title }}</td>
-                                    <td>{{ product.product.url_slug }}</td>
-                                    <td>
-                                        {% if product.product.is_active == 1 %}
-                                            <span class="badge badge-success">Active</span>
-                                        {% else %}
-                                            <span class="badge badge-secondary">Inactive</span>
-                                        {% endif %}
-                                    </td>
-                                    <td>{{ product.product.created_at|date:"Y-m-d H:i" }}</td>
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            <a href="{% url 'product_edit' product_id=product.product.id %}" class="btn btn-info btn-sm">View</a>
-                                            <a href="{% url 'product_add_media' product_id=product.product.id %}" class="btn btn-danger btn-sm">Add Media</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in page_obj %}
+                <tr>
+                    <td>
+                        <span class="badge badge-warning">
+                            Url Slug: {{ product.url_slug }}
+                        </span>
+                        <button
+                            type="button"
+                            class="btn btn-sm btn-secondary ml-2"
+                            onclick="copyProductUrl('{{ request.scheme }}://{{ request.get_host }}{% url 'product_detail' slug=product.url_slug %}')"
+                        >
+                            Copy URL
+                        </button>
+                        <span id="copyMessage" class="copied-message" style="display:none;">Copied!</span>
+                    </td>
+                    <td>
+                        <!-- Existing action buttons can remain here -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
-<div class="row">
-<div class="col-lg-12">
-<div class="card">
-
-                  <div class="card-body">
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination">
-                        {% if page_obj.has_previous %}
-                            <li class="page-item"><a class="page-link" href="{% url 'product_list' %}?filter={{ filter }}&orderby={{ orderby }}&page={{ page_obj.previous_page_number }}">Previous</a></li>
-                        {% else %}
-                            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                        {% endif %}
-                        {% for i in paginator.page_range %}
-                                <li class="page-item {% if i == page_obj.number %}active{% endif %}"><a class="page-link" href="{% url 'product_list' %}?filter={{ filter }}&orderby={{ orderby }}&page={{ i }}">{{ i }}</a></li>
-                        {% endfor %}
-                        {% if page_obj.has_next %}
-                            <li class="page-item"><a class="page-link" href="{% url 'product_list' %}?filter={{ filter }}&orderby={{ orderby }}&page={{ page_obj.next_page_number }}">Next</a></li>
-                        {% else %}
-                            <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
-                        {% endif %}
-
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-                </div>
-</div>
-
 {% endblock page_content %}
-
 
 {% block custom_js %}
 <script>
-function copyToClipboard(productId) {
-    // Create a temporary textarea element
-    const tempTextArea = document.createElement('textarea');
-    tempTextArea.value = productId;
-    document.body.appendChild(tempTextArea);
+function copyProductUrl(url) {
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(function () {
+            const copyMessage = document.getElementById('copyMessage');
+            copyMessage.style.display = 'inline';
 
-    // Select the text
-    tempTextArea.select();
-    tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+            setTimeout(() => {
+                copyMessage.style.display = 'none';
+            }, 2000);
+        });
+    } else {
+        const tempInput = document.createElement('input');
+        tempInput.value = url;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
 
-    // Copy the text to clipboard
-    document.execCommand('copy');
+        const copyMessage = document.getElementById('copyMessage');
+        copyMessage.style.display = 'inline';
 
-    // Remove the temporary textarea
-    document.body.removeChild(tempTextArea);
-
-    // Show the copied message
-    const messageElement = document.getElementById('copy-message-' + productId);
-    messageElement.style.display = 'inline';
-
-    // Hide the message after 2 seconds
-    setTimeout(() => {
-        messageElement.style.display = 'none';
-    }, 2000);
+        setTimeout(() => {
+            copyMessage.style.display = 'none';
+        }, 2000);
+    }
 }
 </script>
 {% endblock custom_js %}

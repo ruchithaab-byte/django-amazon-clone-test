@@ -1,0 +1,39 @@
+---
+title: 'Product List CSV Export'
+description: 'Export product list to CSV with advanced filtering and sorting'
+---
+
+## Product CSV Export Feature
+
+### Overview
+The product list page now supports exporting the entire product list to a CSV file, preserving current filters and sorting.
+
+### How to Use
+1. Navigate to the Product List page
+2. Click the "Export to CSV" button located in the search bar
+3. The CSV will download with the following columns:
+   - Product ID
+   - Product Name
+   - Brand
+   - Category
+   - Subcategory
+   - Maximum Price
+   - Discounted Price
+   - Total Stock
+   - Creation Date
+
+### Export Behavior
+- Maintains current search filters
+- Respects sorting preferences
+- Filename: `products_export.csv`
+
+### Technical Implementation
+- Located in `AdminViews.py`
+- Uses Django's built-in CSV module
+- Leverages existing list view filtering logic
+- Preserves user context during export
+
+### Considerations
+- Requires admin/staff authentication
+- No pagination in exported CSV
+- Exports only currently filtered results
