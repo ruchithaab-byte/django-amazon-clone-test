@@ -29,6 +29,7 @@ Product List <small>(Total: {{ object_list|length }})</small>
         <div class="card">
                   <div class="card-body">
                   <form method="get">
+                    <a href="{% url 'product_list' %}?export=csv&filter={{ filter }}&orderby={{ orderby }}" class="btn btn-success" style="float:right; margin-left: 10px;"><i class="fas fa-file-export"></i> Export to CSV</a>
                     <button class="btn  btn-primary" type="submit" style="float:right"><i class="fas fa-search"></i> Search</button>
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250" style="width: 250px;float:right" name="filter" value="{{ filter }}">
                    </form>

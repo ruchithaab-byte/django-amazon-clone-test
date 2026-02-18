@@ -1,0 +1,20 @@
+[
+  {
+    "content": "Completed research for: codebase_search",
+    "source": "codebase_search",
+    "category": "codebase_search",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "Completed research for: pattern_analysis",
+    "source": "pattern_analysis",
+    "category": "pattern_analysis",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "Comprehensive dependency analysis reveals a Django e-commerce project with moderate complexity. Key concerns include potential version mismatches, security configuration risks, and unmanaged transitive dependencies. The project uses a traditional pip-based dependency management approach with good test framework integration.",
+    "source": "dependency_check",
+    "category": "dependency_check",
+    "relevance_score": 1.0
+  }
+]

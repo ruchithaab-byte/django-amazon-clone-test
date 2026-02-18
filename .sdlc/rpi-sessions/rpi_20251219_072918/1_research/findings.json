@@ -1,0 +1,20 @@
+[
+  {
+    "content": "Completed research for: codebase_search",
+    "source": "codebase_search",
+    "category": "codebase_search",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "title='Standardize Sort Link Implementation' description='Create a consistent approach for sort links across admin templates' priority=<Priority.P2: 'P2'> assignee=None due_date=None files=[FileReference(path='DjangoEcommerceApp/templates/admin_templates/category_list.html', line_start=None, line_end=None, snippet=None), FileReference(path='DjangoEcommerceApp/templates/admin_templates/sub_category_list.html', line_start=None, line_end=None, snippet=None), FileReference(path='DjangoEcommerceApp/templates/admin_templates/product_list.html', line_start=None, line_end=None, snippet=None), FileReference(path='DjangoEcommerceApp/templates/admin_templates/merchant_list.html', line_start=None, line_end=None, snippet=None)]",
+    "source": "pattern_analysis",
+    "category": "pattern_analysis",
+    "relevance_score": 1.0
+  },
+  {
+    "content": "Comprehensive dependency analysis of django-amazon-clone-test project reveals critical Django version conflicts, potential performance issues in list views, and missing dependency documentation.",
+    "source": "dependency_check",
+    "category": "dependency_check",
+    "relevance_score": 1.0
+  }
+]

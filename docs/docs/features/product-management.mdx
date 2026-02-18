@@ -1,20 +1,37 @@
 ---
-title: 'Product ID Copy Functionality'
-description: 'Allows quick copying of Product ID in the product list view'
+title: Product Management Features
+description: Export and manage product information
 ---
 
-## Product ID Copy Feature
+## Exporting Product List
 
-### Overview
-The product list view now includes a "Copy" button next to each product ID, enabling users to quickly copy the product ID to their clipboard.
+### Export to CSV
 
-### Usage
+The product list page now supports exporting the entire product list to a CSV file. This feature allows easy data extraction for reporting and analysis.
+
+#### How to Export
+
 1. Navigate to the Product List page
-2. Find the product you want to copy the ID for
-3. Click the "Copy" button next to the product ID
-4. A brief "Copied!" message will appear to confirm the action
+2. Click the "Export to CSV" button located next to the search bar
+3. The CSV file will download automatically
 
-### Technical Implementation
-- Copy functionality implemented using JavaScript `document.execCommand('copy')`
-- Temporary textarea created to facilitate clipboard copying
-- Success message appears and disappears automatically after 2 seconds
+#### Exported Data
+The CSV file includes the following product details:
+- Product ID
+- Name
+- Brand
+- Category
+- Subcategory
+- Maximum Price
+- Discount Price
+- Stock Quantity
+- Creation Date
+
+#### Filtering and Ordering
+- Any active search filters or ordering will be preserved in the exported CSV
+- Allows for targeted exports based on current view
+
+### Benefits
+- Easy data extraction
+- Compatible with spreadsheet software
+- Supports reporting and inventory management

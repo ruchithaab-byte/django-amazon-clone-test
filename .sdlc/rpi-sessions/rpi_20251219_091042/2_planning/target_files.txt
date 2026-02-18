@@ -1,0 +1,3 @@
+dependency_check
+codebase_search
+pattern_analysis
